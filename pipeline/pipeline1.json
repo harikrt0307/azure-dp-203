@@ -49,7 +49,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "git",
+						"referenceName": "csv",
 						"type": "DatasetReference"
 					}
 				],
