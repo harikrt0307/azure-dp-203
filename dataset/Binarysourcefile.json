@@ -1,0 +1,18 @@
+{
+	"name": "Binarysourcefile",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "appserver",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "FileServerLocation",
+				"fileName": "access.log"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

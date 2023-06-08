@@ -1,0 +1,6 @@
+{
+	"name": "appvmserver",
+	"properties": {
+		"type": "SelfHosted"
+	}
+}

@@ -1,0 +1,9 @@
+{
+	"name": "systechdf202306",
+	"location": "northeurope",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "ab821a87-53b7-4dc4-9bc2-8afa94f4da80",
+		"tenantId": "5d8280e9-6346-46c6-bcfe-d30e8bf6fa72"
+	}
+}
