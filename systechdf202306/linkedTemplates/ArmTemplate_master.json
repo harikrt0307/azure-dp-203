@@ -1,0 +1,152 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "systechdf202306"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage1'"
+		},
+		"appdb_Service_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'appdb_Service'"
+		},
+		"appserver_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'appserver'"
+		},
+		"datalake0307_Service_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'datalake0307_Service'"
+		},
+		"pooldb_Service_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'pooldb_Service'"
+		},
+		"systechworkspace_service_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'systechworkspace_service'"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://datalake0307.dfs.core.windows.net/"
+		},
+		"appserver_properties_typeProperties_host": {
+			"type": "string",
+			"defaultValue": "D:\\nginx-1.24.0\\logs"
+		},
+		"appserver_properties_typeProperties_userId": {
+			"type": "string",
+			"defaultValue": "vmuser"
+		},
+		"datalake0307_Service_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://datalake0307.dfs.core.windows.net/"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "systechdf202306_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureDataLakeStorage1_accountKey": {
+						"value": "[parameters('AzureDataLakeStorage1_accountKey')]"
+					},
+					"appdb_Service_connectionString": {
+						"value": "[parameters('appdb_Service_connectionString')]"
+					},
+					"datalake0307_Service_accountKey": {
+						"value": "[parameters('datalake0307_Service_accountKey')]"
+					},
+					"pooldb_Service_connectionString": {
+						"value": "[parameters('pooldb_Service_connectionString')]"
+					},
+					"systechworkspace_service_connectionString": {
+						"value": "[parameters('systechworkspace_service_connectionString')]"
+					},
+					"AzureDataLakeStorage1_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
+					},
+					"datalake0307_Service_properties_typeProperties_url": {
+						"value": "[parameters('datalake0307_Service_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "systechdf202306_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"appserver_password": {
+						"value": "[parameters('appserver_password')]"
+					},
+					"appserver_properties_typeProperties_host": {
+						"value": "[parameters('appserver_properties_typeProperties_host')]"
+					},
+					"appserver_properties_typeProperties_userId": {
+						"value": "[parameters('appserver_properties_typeProperties_userId')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'systechdf202306_ArmTemplate_0')]"
+			]
+		},
+		{
+			"name": "systechdf202306_ArmTemplate_2",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_2.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'systechdf202306_ArmTemplate_1')]"
+			]
+		}
+	]
+}

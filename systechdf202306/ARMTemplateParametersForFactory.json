@@ -1,0 +1,39 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "systechdf202306"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"appdb_Service_connectionString": {
+			"value": ""
+		},
+		"appserver_password": {
+			"value": ""
+		},
+		"datalake0307_Service_accountKey": {
+			"value": ""
+		},
+		"pooldb_Service_connectionString": {
+			"value": ""
+		},
+		"systechworkspace_service_connectionString": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://datalake0307.dfs.core.windows.net/"
+		},
+		"appserver_properties_typeProperties_host": {
+			"value": "D:\\nginx-1.24.0\\logs"
+		},
+		"appserver_properties_typeProperties_userId": {
+			"value": "vmuser"
+		},
+		"datalake0307_Service_properties_typeProperties_url": {
+			"value": "https://datalake0307.dfs.core.windows.net/"
+		}
+	}
+}
