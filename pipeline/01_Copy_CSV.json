@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy_brf",
+				"name": "Copy_bri",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
